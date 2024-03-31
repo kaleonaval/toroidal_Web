@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta content="no-cache" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.18.1/full/pyodide.js"></script>
+    <script type="module" src="https://pyscript.net/releases/2024.1.1/core.js"></script>
+    
+    <title>Tk Propeller Brazil</title>
+    <style>
+        footer {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: #f8f9fa; /* Cor de fundo do rodapé */
+            padding: 10px 0; /* Espaçamento interno superior e inferior */
+            text-align: center; /* Alinhar o texto ao centro */
+            font-size: 14px; /* Tamanho da fonte */
+            color: #333; /* Cor do texto */
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 90vh;
+        }
+        .container {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 820px;
+            width: 100%;
+            text-align: center;
+        }
+        h1 {
+            font-family: Times, serif;
+            font-size: 28px;
+            color: #000;
+            margin-bottom: 20px;
+        }
+        .black {
+            color: #000;
+        }
+        .green {
+            color: green;
+        }
+        .yellow {
+            color: yellow;
+        }
+        input {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #ff5100;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #15b300;
+        }
+        iframe {
+            width: 100%;
+            height: 400px; /* Defina a altura desejada para o vídeo */
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <style>
+        .slider-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1px;
+            margin-top: 1px;
+            max-height: 40px;
+            
+        }
+
+        .slider-container label {
+            width: 250px; /* Largura do rótulo */
+            margin-right: 1x; /* Espaçamento à direita */
+            
+        }
+
+        .slider-container input[type="range"] {
+            width: 30%; /* Preencha todo o espaço restante */
+            
+        }
+        .hidden {
+    display: block;
+}
+    </style>
+
+<div class="container">
+    <form id="propellerForm">
+        <h1 style="font-size: 50px;"><span class="black">Tk Propeller</span> <span class="green">B</span><span class="yellow">R</span></h1>
+        <div id="root" style="width: 800px; height: 400px;"></div>
+        <div class="slider-container">
+            <label for="num_pas">Nº de pás:</label>
+            <input type="range" id="num_pas" name="num_pas" min="1" max="11" value="4">
+            <output id="num_pas_value">4</output>
+        </div>
+        <div class="slider-container">
+            <label for="relacao_ae_ao">Relação AE/AO:</label>
+            <input type="range" id="relacao_ae_ao" name="relacao_ae_ao" min="0" max="1" value="0.7" step="0.1">
+            <output id="relacao_ae_ao_value">0.7</output>
+        </div>
+        <div class="slider-container">
+            <label for="relacao_p_d">Relação P/D:</label>
+            <input type="range" id="relacao_p_d" name="relacao_p_d" min="0.6" max="2" value="1" step="0.1">
+            <output id="relacao_p_d_value">1</output>
+        </div>
+        <div class="slider-container">
+            <label for="relacao_rake">Relação Rake:</label>
+            <input type="range" id="relacao_rake" name="relacao_rake" min="0" max="60" value="0">
+            <output id="relacao_rake_value">0</output>
+        </div>
+        <div class="slider-container">
+            <label for="diametro_boço">Diametro do Boço:</label>
+            <input type="range" id="diametro_boço" name="diametro_boço" min="0.1" max="0.4" value="0.2" step="0.05">
+            <output id="diametro_boço_value">0.2</output>
+        </div>
+        <div class="slider-container">
+            <label for="y">Y (constante):</label>
+            <input type="range" id="y" name="y" min="0.01" max="0.1" value="0.05" step="0.01">
+            <output id="y_value">0.05</output>
+        </div>
+        <div class="slider-container">
+            <label for="yy">Y (quadrática):</label>
+            <input type="range" id="yy" name="yy" min="0.02" max="0.6" value="0.15" step="0.01">
+            <output id="yy_value">0.15</output>
+        </div>
+    </form>
+    <button type="button1" id="my_button2" data-variable="None" style="background-color: #00a816;">Gerar</button>
+    <button type="button2" id="my_button1" data-variable="None" style="display: none;">GERAR</button>
+    <button type="button3" id="download" data-variable="None" style="background-color: #ced10a;" >Download</button>
+    <a href="sobre.html" target="_blank" ><button style="background-color: #280ad1;" >Sobre</button></a>
+    <button type="button" id="login_button">Login</button>
+</div>
+    
+        <div style="display: none;">
+            <py-config>
+                packages = ["numpy","pandas"]
+                [[fetch]]
+                files = ["./toroidal.py"]
+            </py-config>
+            
+  
+        </div>
+        </script>
+          <py-script type="py-script" src="main.py"></py-script>
+          <script type="module" src="javascript.js"></script>
+    </div>
+    <footer> 
+        <p>&copy; 2024 Kaléo Elias Gonçalves da Silva.
+                    Este software é livre, propulsores disponíveis para estudo.
+                - kaleonaval.20221@poli.ufrj.br - tkpropeller@outlook.com</p>
+    </footer>
+</body>
+</html>

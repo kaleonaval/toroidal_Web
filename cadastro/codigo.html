@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.18.1/full/pyodide.js"></script>
+    <script type="module" src="https://pyscript.net/releases/2024.1.1/core.js"></script>
+    <title>Confirmação de Código</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .confirmation-container {
+            margin-top: 50px;
+        }
+        h2 {
+            color: #333;
+        }
+        input[type="text"] {
+            padding: 10px;
+            margin: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        input[type="submit"] {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="confirmation-container">
+        <h2>Confirmação de Código</h2>
+        <p>Por favor, insira o código que você recebeu por e-mail:</p>
+        <input type="text" id="code_email" name="code_name">
+        <button type="button" value="Confirmar"  id="code_id_button" >Check</button>
+
+
+<div style="display: none;">
+
+    <script src="check_code_aut.js"></script>
+
+    </div>
+
+</body>
+</html>
