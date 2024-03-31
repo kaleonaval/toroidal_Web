@@ -4,15 +4,19 @@
     "express": "^4.19.2",
     "mssql": "^10.0.2"
   },
+  "engines": {
+    "node": "14.x"
+  },
   "scripts": {
-    "start": "node cadastro/server.js"
+    "start": "node cadastro/server.js",
+    "dev": "nodemon"
   },
   "name": "cadastro",
   "version": "1.0.0",
-  "main": "cadastro.js",
-  "devDependencies": {},
-  "keywords": [],
+  "main": "cadastro/server.js",
+  "description": "",
   "author": "",
   "license": "ISC",
-  "description": ""
+  "keywords": [],
+  "devDependencies": {}
 }
